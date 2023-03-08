@@ -18,15 +18,18 @@ def add_item():
 
     item = input('What item would you like to add? ')
 
+    # cancels addition of item if not wanted
     if item == '' or item == 'back':
         return None
 
     while True:
         price = input(f'What is the price of \'{item}\'? ')
 
+        # cancels addition of item if not wanted
         if price == '' or price == 'back':
             return None
 
+        # only able to exit loop if a valid input is entered
         try:
             price = float(price)
         except ValueError:
@@ -45,10 +48,10 @@ def view_cart():
     print('The contents of the shopping cart are:')
 
     if len(items) == 0:
-        print('<list empty>')
+        print('Your shopping cart empty!')
     else:
         for i in range(len(items)):
-            print(f'{i+1}. {items[i]} - ${(prices[i]):.2f}')
+            print(f'{i+1}. {items[i]}'.ljust(20), f'${(prices[i]):.2f}')
 
 
 def remove_item():
@@ -58,9 +61,11 @@ def remove_item():
     while True:
         rem = input('Which item would you like to remove? ')
 
+        # cancels addition of item if not wanted
         if rem == '' or rem == 'back':
             return None
 
+        # only able to exit loop if a valid input is entered
         try:
             rem = int(rem)
         except ValueError:
